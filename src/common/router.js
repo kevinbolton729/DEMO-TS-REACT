@@ -78,27 +78,6 @@ export const getRouterData = (app) => {
       // name: '工作台',
       // authority: 'admin',
     },
-    '/cms/sildes': {
-      component: dynamicWrapper(app, ['silde'], () => import('../routes/Cms/Sildes')),
-    },
-    '/cms/channels': {
-      component: dynamicWrapper(app, ['channel'], () => import('../routes/Cms/Channels')),
-    },
-    '/cms/articles': {
-      component: dynamicWrapper(app, ['article'], () => import('../routes/Cms/Articles')),
-    },
-    '/cms/advers': {
-      component: dynamicWrapper(app, ['adver'], () => import('../routes/Cms/Advers')),
-    },
-    '/special/brand': {
-      component: dynamicWrapper(app, ['brand'], () => import('../routes/Special/Brand')),
-    },
-    '/special/shop': {
-      component: dynamicWrapper(app, ['shop'], () => import('../routes/Special/Shop')),
-    },
-    '/join/apply': {
-      component: dynamicWrapper(app, ['apply'], () => import('../routes/Apply/Apply')),
-    },
     '/user': {
       component: dynamicWrapper(app, [], () => import('../layouts/UserLayout')),
     },
