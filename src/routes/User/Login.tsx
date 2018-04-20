@@ -1,34 +1,40 @@
-import React, { Component } from 'react';
+import { Alert, Checkbox, Icon } from 'antd';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
-import { Checkbox, Alert, Icon } from 'antd';
-import Login from '@/components/Login';
-import styles from './Login.less';
+import * as React from 'react';
+// 组件
+import Login from '../../components/Login';
+// 声明
+import { LoginProps } from './index';
+
+const { Link } = require('dva/router');
+// 样式
+const styles = require('./Login.less');
 
 const { Tab, UserName, Password, Mobile, Captcha, Submit } = Login;
 
-@connect(({ login, loading }) => ({
+@connect(({ login, loading }: any) => ({
   login,
   submitting: loading.effects['login/login'],
 }))
-export default class LoginPage extends Component {
+export default class LoginPage extends React.Component<LoginProps, any> {
   state = {
     type: 'account',
     autoLogin: true,
     mode: {
-      isRegister: false, // 是否使用注册
-      isMobile: false, // 是否使用手机号码登录
-      isOther: false, // 是否使用其他登录方式
-      isForget: false, // 是否使用忘记密码
-      isAuto: false, // 是否使用自动登录
+      isRegister: false,
+      isMobile: false,
+      isOther: false,
+      isForget: false,
+      isAuto: false,
     },
   };
 
-  onTabChange = (type) => {
+  onTabChange = () => {
+    const { type } = this.state;
     this.setState({ type });
   };
 
-  handleSubmit = (err, values) => {
+  handleSubmit = (err: any, values: any) => {
     const { type } = this.state;
     if (!err) {
       this.props.dispatch({
@@ -41,14 +47,14 @@ export default class LoginPage extends Component {
     }
   };
 
-  changeAutoLogin = (e) => {
+  changeAutoLogin = (e: any) => {
     this.setState({
       autoLogin: e.target.checked,
     });
   };
 
-  renderMessage = (content) => {
-    return <Alert style={{ marginBottom: 24 }} message={content} type="error" showIcon />;
+  renderMessage = (content: string) => {
+    return <Alert style={{ marginBottom: 24 }} message={content} type="error" showIcon={true} />;
   };
 
   render() {
@@ -89,17 +95,17 @@ export default class LoginPage extends Component {
             )}
           </div>
           <Submit loading={submitting}>登录</Submit>
-          <div className={styles.other}>
+          <div className="other">
             {isOther && (
               <span>
                 其他登录方式
-                <Icon className={styles.icon} type="alipay-circle" />
-                <Icon className={styles.icon} type="taobao-circle" />
-                <Icon className={styles.icon} type="weibo-circle" />
+                <Icon className="icon" type="alipay-circle" />
+                <Icon className="icon" type="taobao-circle" />
+                <Icon className="icon" type="weibo-circle" />
               </span>
             )}
             {isRegister && (
-              <Link className={styles.register} to="/user/register">
+              <Link className="register" to="/user/register">
                 注册账户
               </Link>
             )}

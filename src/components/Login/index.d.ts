@@ -18,6 +18,7 @@ export interface LoginItemProps {
   name?: string;
   rules?: any[];
   style?: React.CSSProperties;
+  placeholder?: string;
   onGetCaptcha?: () => void;
 }
 

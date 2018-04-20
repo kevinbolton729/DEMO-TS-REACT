@@ -1,3 +1,6 @@
+/// <reference types="react" />
+import * as React from 'react';
+
 export interface ConfirmOptions<T> {
   title?: T;
   content?: T;

@@ -18,6 +18,7 @@
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
+
     "baseUrl": "."
   },
   "exclude": ["node_modules", "build", "scripts", "webpack", "jest"]
