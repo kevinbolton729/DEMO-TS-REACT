@@ -29,15 +29,12 @@ module.exports = {
   manifest: {
     basePath: '/',
   },
-  // externals: {
-  //   react: 'window.React',
-  //   'react-dom': 'window.ReactDOM',
-  // },
+  // externals: {},
   html: {
     template: './src/index.ejs',
   },
   theme: './src/theme.js',
-  extraResolveExtensions: ['js', 'jsx', 'ts', 'tsx', 'css', 'less', 'scss'],
+  extraResolveExtensions: ['.json', '.js', '.jsx', '.ts', '.tsx', '.css', '.less', '.scss'],
   extraBabelPlugins: [
     'transform-decorators-legacy',
     ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }],
