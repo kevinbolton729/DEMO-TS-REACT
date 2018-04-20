@@ -18,6 +18,7 @@ export const API_DOMAIN = 'http://39.108.178.198:7003';
 export const LOGO_USER = '../images/logo.png';
 export const LOGO_PAGE = '../images/mainLogo.png';
 // Login/GlobalFooter 提示信息
+export const SYS_NAME = 'DEMO';
 export const SYS_INFO = '内容管理系统 CMS ADMIN Vol 1.0';
 export const BROWSER_INFO = '推荐使用360极速/Chrome/火狐等现代浏览器';
 export const SERVICE_INFO = '2018 QQ 7526666 / 3832565 提供技术支持';

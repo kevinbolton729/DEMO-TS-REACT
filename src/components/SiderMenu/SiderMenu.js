@@ -3,7 +3,7 @@ import { Layout, Menu, Icon } from 'antd';
 import pathToRegexp from 'path-to-regexp';
 import { Link } from 'dva/router';
 // 常量
-import { NOCOLLAPSEDWIDTH } from '@/utils/consts';
+import { SYS_NAME, NOCOLLAPSEDWIDTH } from '@/utils/consts';
 // 样式
 import styles from './index.less';
 
@@ -45,7 +45,10 @@ export default class SiderMenu extends PureComponent {
    * @param  props
    */
   getDefaultCollapsedSubMenus(props) {
-    const { location: { pathname } } = props || this.props;
+    const {
+      location: { pathname },
+    } =
+      props || this.props;
     // eg. /list/search/articles = > ['','list','search','articles']
     let snippets = pathname.split('/');
     // Delete the end
@@ -203,7 +206,13 @@ export default class SiderMenu extends PureComponent {
     });
   };
   render() {
-    const { logo, collapsed, location: { pathname }, onCollapse, isMobile } = this.props;
+    const {
+      logo,
+      collapsed,
+      location: { pathname },
+      onCollapse,
+      isMobile,
+    } = this.props;
     const { openKeys } = this.state;
     // Don't show popup menu when it is been collapsed
     const menuProps = collapsed
@@ -229,7 +238,7 @@ export default class SiderMenu extends PureComponent {
         <div className={styles.logo} key="logo">
           {/* <Link to="/"> */}
           <img src={logo} alt="logo" />
-          <h1>舒览家居</h1>
+          <h1>{SYS_NAME}</h1>
           {/* </Link> */}
         </div>
         <Menu
