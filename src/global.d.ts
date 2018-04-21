@@ -1,3 +1,3 @@
-declare module 'dva/router' {
-  export const Link: any;
+export interface Props {
+  dispatch: (params: { type: string; payload?: any }) => void;
 }

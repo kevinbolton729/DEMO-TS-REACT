@@ -1,9 +1,12 @@
 import * as React from 'react';
+import { Props } from '../../global';
+
+type Dispatch = Props['dispatch'];
 
 export interface ILoginProps {
+  dispatch: Dispatch;
   login: any;
   submitting: boolean;
-  dispatch(params: { type: string; payload?: any }): void;
 }
 export interface ILoginStates {
   type: string;
