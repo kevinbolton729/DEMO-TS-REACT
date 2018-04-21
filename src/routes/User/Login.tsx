@@ -1,22 +1,22 @@
 import { Alert, Checkbox, Icon } from 'antd';
 import { connect } from 'dva';
+import { Link } from 'dva/router';
 import * as React from 'react';
-// 组件
+// 组件库
 import Login from '../../components/Login';
 // 声明
-import { LoginProps } from './index';
+import { ILoginClass, ILoginProps, ILoginStates } from './';
 
-const { Link } = require('dva/router');
 // 样式
 const styles = require('./Login.less');
-
+// 组件
 const { Tab, UserName, Password, Mobile, Captcha, Submit } = Login;
 
 @connect(({ login, loading }: any) => ({
   login,
   submitting: loading.effects['login/login'],
 }))
-export default class LoginPage extends React.Component<LoginProps, any> {
+class LoginComponent extends React.Component<ILoginProps, ILoginStates> implements ILoginClass {
   state = {
     type: 'account',
     autoLogin: true,
@@ -47,9 +47,9 @@ export default class LoginPage extends React.Component<LoginProps, any> {
     }
   };
 
-  changeAutoLogin = (e: any) => {
+  changeAutoLogin = (event: any) => {
     this.setState({
-      autoLogin: e.target.checked,
+      autoLogin: event.target.checked,
     });
   };
 
@@ -115,3 +115,5 @@ export default class LoginPage extends React.Component<LoginProps, any> {
     );
   }
 }
+
+export default LoginComponent;
