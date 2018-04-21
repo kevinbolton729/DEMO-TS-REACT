@@ -147,18 +147,9 @@ class BasicLayout extends React.PureComponent {
   }
 
   componentWillMount() {
-    const { dispatch, currentSiteid } = this.props;
+    const { dispatch } = this.props;
     dispatch({
       type: 'user/fetchCurrent',
-    });
-    dispatch({
-      type: 'global/querySiteTypes',
-    });
-    dispatch({
-      type: 'global/queryChannelTypes',
-      payload: {
-        siteid: currentSiteid,
-      },
     });
   }
 

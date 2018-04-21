@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Props } from '../../global';
+import { IProps, IReturnTypes } from '../../global';
 
-type Dispatch = Props['dispatch'];
+type Dispatch = IProps['dispatch'];
+type ReturnVoid = IReturnTypes['void'];
 
 export interface ILoginProps {
   dispatch: Dispatch;
@@ -20,8 +21,8 @@ export interface ILoginStates {
   };
 }
 
-export interface ILoginClass {
-  onTabChange: () => void;
+export interface ILoginItems {
+  onTabChange: ReturnVoid;
   handleSubmit: (err: any, values: any) => void;
   changeAutoLogin: (event: any) => void;
   renderMessage: (content: string) => React.ReactNode;

@@ -1,25 +1,21 @@
 import { Avatar, Button, Card, Col, Row } from 'antd';
 import { connect } from 'dva';
 import moment from 'moment';
-import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import * as React from 'react';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 // 常量
 import { ROLE_NAME, URL_PREFIX } from '../../utils/consts';
 // 声明
-import { IWorkProps, IWorkStates } from './';
+import { IWorkItems, IWorkProps, IWorkStates } from './';
 // 样式
 const styles = require('./WorkSpace.less');
 
-@connect(({ workspace }: any) => ({
+@connect(({ workspace, user }: any) => ({
+  currentUser: user.currentUser,
   loading: workspace.loading,
   lists: workspace.lists,
 }))
-class WorkSpace extends PureComponent<IWorkProps, IWorkStates> {
-  static contextTypes = {
-    currentUser: PropTypes.object,
-  };
-
+class WorkSpace extends React.PureComponent<IWorkProps, IWorkStates> implements IWorkItems {
   componentWillMount() {
     this.props.dispatch({
       type: 'workspace/queryLists',
@@ -58,8 +54,7 @@ class WorkSpace extends PureComponent<IWorkProps, IWorkStates> {
   };
 
   render() {
-    const { currentUser } = this.context;
-    const { lists, loading } = this.props;
+    const { currentUser, lists, loading } = this.props;
     const { siteNums, articleNums, articleTodayNums } = lists;
     const pageHeaderContent = (
       <div className={styles.pageHeaderContent}>

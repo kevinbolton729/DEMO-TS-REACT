@@ -5,7 +5,7 @@ import * as React from 'react';
 // 组件库
 import Login from '../../components/Login';
 // 声明
-import { ILoginClass, ILoginProps, ILoginStates } from './';
+import { ILoginItems, ILoginProps, ILoginStates } from './';
 
 // 样式
 const styles = require('./Login.less');
@@ -16,7 +16,7 @@ const { Tab, UserName, Password, Mobile, Captcha, Submit } = Login;
   login,
   submitting: loading.effects['login/login'],
 }))
-class LoginComponent extends React.Component<ILoginProps, ILoginStates> implements ILoginClass {
+class LoginComponent extends React.Component<ILoginProps, ILoginStates> implements ILoginItems {
   state = {
     type: 'account',
     autoLogin: true,
