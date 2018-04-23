@@ -8,7 +8,7 @@ import { message as openMessage } from 'antd';
 import { routerRedux } from 'dva/router';
 import md5 from 'js-md5';
 // 声明
-import { FNS } from './';
+import { IFns } from '../global';
 // 常量
 import {
   API_DOMAIN,
@@ -19,12 +19,12 @@ import {
 } from './consts';
 
 // md5处理
-export const setMd5: FNS.setMd5 = pwd => {
+export const setMd5: IFns['setMd5'] = pwd => {
   return md5(md5(pwd + SECRETKEY_USER) + SECRETKEY_USER);
 };
 
 // 格式化数字
-const twoDecimal: FNS.twoDecimal = num => {
+const twoDecimal: IFns['twoDecimal'] = num => {
   // 显示数字，保留小数点后两位
   // 返回值的类型为String
   const f = parseFloat(num);
@@ -35,7 +35,7 @@ const twoDecimal: FNS.twoDecimal = num => {
 
   return (Math.floor(f * 100) / 100).toFixed(2);
 };
-export const parseNum: FNS.parseNum = value =>
+export const parseNum: IFns['parseNum'] = value =>
   twoDecimal(value).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 // 解析URL地址
 export const parseUrl = (url: string) => {
@@ -54,7 +54,7 @@ export const parseUrl = (url: string) => {
  * @param {Array} firstMenus 一级菜单
  * @param {Array} [data=[]]  菜单数据
  */
-export const getMenus: FNS.getMenus = (firstMenus, data = []) =>
+export const getMenus: IFns['getMenus'] = (firstMenus, data = []) =>
   firstMenus.reduce((arr, current) => {
     const children = [];
     const obj = { ...current };
@@ -69,7 +69,7 @@ export const getMenus: FNS.getMenus = (firstMenus, data = []) =>
  * @description 生成一级菜单
  * @param {Array} [data=[]]  菜单数据
  */
-export const getFirstMenu: FNS.getFirstMenu = (data = []) =>
+export const getFirstMenu: IFns['getFirstMenu'] = (data = []) =>
   data.reduce((arr, current) => {
     if (parseInt(current.sortPid, 10) === 0) {
       return arr.concat(current);
@@ -80,7 +80,7 @@ export const getFirstMenu: FNS.getFirstMenu = (data = []) =>
  * @description 生成下级菜单
  * @param {Array} [data=[]]  菜单数据
  */
-export const getChildMenus: FNS.getChildMenus = (sortId, data = []) =>
+export const getChildMenus: IFns['getChildMenus'] = (sortId, data = []) =>
   data.reduce((arr, current) => {
     const children = [];
     if (sortId === current.sortPid) {
@@ -94,15 +94,15 @@ export const getChildMenus: FNS.getChildMenus = (sortId, data = []) =>
     return arr;
   }, []);
 // 字符串转换成大写
-export const strToUpper: FNS.strToUpper = str => str.toString().toUpperCase();
+export const strToUpper: IFns['strToUpper'] = str => str.toString().toUpperCase();
 // 获取图片Base64编码内容
-export const getBase64: FNS.getBase64 = (img, callback) => {
+export const getBase64: IFns['getBase64'] = (img, callback) => {
   const reader = new FileReader();
   reader.addEventListener('load', () => callback(reader.result));
   reader.readAsDataURL(img);
 };
 // base64 to Blob
-export const base64UrlToBlob: FNS.base64UrlToBlob = urlData => {
+export const base64UrlToBlob: IFns['base64UrlToBlob'] = urlData => {
   // 去掉url的头，并转换为byte
   const bytes = window.atob(urlData.split(',')[1]);
   // 处理异常,将ascii码小于0的转换为大于0
@@ -119,7 +119,7 @@ export const base64UrlToBlob: FNS.base64UrlToBlob = urlData => {
   });
 };
 // 过滤react-quill getContent()的内容，获取待上传的图片
-export const getUploadImgs: FNS.getUploadImgs = (passArr = []) => {
+export const getUploadImgs: IFns['getUploadImgs'] = (passArr = []) => {
   if (passArr.length === 0) return passArr;
 
   const newArr = passArr;
@@ -140,7 +140,7 @@ export const getUploadImgs: FNS.getUploadImgs = (passArr = []) => {
   return uploadImages;
 };
 // 使用图片url 替换 Delta中base64 image
-export const covertBase64toUrl: FNS.covertBase64toUrl = params => {
+export const covertBase64toUrl: IFns['covertBase64toUrl'] = params => {
   const { data, contentOps } = params;
   // console.log(data, 'data');
   // console.log(contentOps, 'contentOps');
@@ -159,7 +159,7 @@ export const covertBase64toUrl: FNS.covertBase64toUrl = params => {
   return contentOps;
 };
 // 图片上传前
-export const beforeUpload: FNS.beforeUpload = file => {
+export const beforeUpload: IFns['beforeUpload'] = file => {
   const isIMG =
     file.type.indexOf('image/jpeg') !== -1 ||
     file.type.indexOf('image/gif') !== -1 ||
@@ -176,7 +176,7 @@ export const beforeUpload: FNS.beforeUpload = file => {
   return isIMG && isLt;
 };
 // 视频上传前
-export const beforeUploadVideo: FNS.beforeUploadVideo = file => {
+export const beforeUploadVideo: IFns['beforeUploadVideo'] = file => {
   const isMp4 = file.type.indexOf('video/mp4') !== -1;
   const isLt = file.size / 1024 / 1024 < 50;
 
@@ -193,14 +193,14 @@ export const beforeUploadVideo: FNS.beforeUploadVideo = file => {
 
 // [models]
 // 删除Token,并跳转至登录页 /user/login
-export const delToken: FNS.delToken = function*(params) {
+export const delToken: IFns['delToken'] = function*(params) {
   const { put } = yield params;
 
   // yield localStorage.removeItem(LOCALSTORAGENAME);
   yield put(routerRedux.push(PAGELOGIN));
 };
 // Token失效时，提示并跳转至 /user/login
-export const noToken: FNS.noToken = function*(params) {
+export const noToken: IFns['noToken'] = function*(params) {
   const { message, put } = yield params;
 
   yield openMessage.warn(message);
@@ -208,7 +208,7 @@ export const noToken: FNS.noToken = function*(params) {
   yield put(routerRedux.push(PAGELOGIN));
 };
 // 跳转页面
-export const gotoPage: FNS.gotoPage = function*(params) {
+export const gotoPage: IFns['gotoPage'] = function*(params) {
   const { url, key, put } = yield params;
 
   // yield console.log(key, 'key');

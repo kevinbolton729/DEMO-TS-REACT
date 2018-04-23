@@ -16,14 +16,14 @@ import 'moment/locale/zh-cn';
 // 样式
 import 'react-quill/dist/quill.snow.css'; // 富文本编辑器 react-quill样式
 // 声明
-import { DvaInstance } from './global';
+import { App } from './global';
 import './static/index.less';
 
 // Moment 中文设置
 moment.locale('zh-cn');
 
 // 1. Initialize
-const app: DvaInstance = dva({
+const app: App = dva({
   history: createHistory(),
 });
 

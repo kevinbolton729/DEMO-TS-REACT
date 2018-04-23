@@ -2,7 +2,7 @@ import { notification } from 'antd';
 import axios from 'axios';
 import qs from 'qs';
 // 声明
-import { AXIOS } from './';
+import { IAxios } from '../global';
 // 常量
 // import { LOCALSTORAGENAME } from '@/utils/consts';
 
@@ -25,7 +25,7 @@ const codeMessage = {
   555: '网络请求错误',
 };
 
-const checkStatus: AXIOS.checkStatus = (response, resolve) => {
+const checkStatus: IAxios['checkStatus'] = (response, resolve) => {
   if (response.status >= 200 && response.status < 300) {
     return resolve(response);
   }
@@ -34,12 +34,12 @@ const checkStatus: AXIOS.checkStatus = (response, resolve) => {
     message: `请求错误 ${response.status}: ${response.url}`,
     description: errortext,
   });
-  const error: AXIOS.IError = new Error(errortext);
+  const error: IAxios['error'] = new Error(errortext);
   error.status = response.status;
   throw error;
 };
 
-const fetch: AXIOS.fetch = (url: string, options: any) => {
+const fetch: IAxios['fetch'] = (url: string, options: any) => {
   let withCredentials = true;
   if (options && options.credentials) {
     withCredentials = options.credentials;
@@ -112,7 +112,7 @@ axios.interceptors.response.use(
  * @param  {object} [options] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
  */
-const request: AXIOS.request = (url, options) => {
+const request: IAxios['request'] = (url, options) => {
   const newOptions = { ...options };
 
   newOptions.headers = {
@@ -137,7 +137,7 @@ const request: AXIOS.request = (url, options) => {
 
   return fetch(url, newOptions)
     .then((response: any) => response.data)
-    .catch((error: AXIOS.IError) => {
+    .catch((error: IAxios['error']) => {
       const newError = error;
       const errorMessage = newError.message;
       newError.message = codeMessage[newError.status] || codeMessage['555'];

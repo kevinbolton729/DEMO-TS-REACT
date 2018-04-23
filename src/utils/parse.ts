@@ -1,4 +1,4 @@
-import { IParse } from './';
+import { IParse } from '../global';
 
 export const parseResponse: IParse = params => {
   const { status, message, extData } = params;
