@@ -15,7 +15,7 @@ module.exports = {
       'rc-drawer-menu',
       'react-quill',
     ],
-    index: './src/index.js',
+    index: './src/index.ts',
   },
   outputPath: resolve(__dirname, 'dist'),
   publicPath: '/',

@@ -1,6 +1,8 @@
-import axios from 'axios';
 import { notification } from 'antd';
+import axios from 'axios';
 import qs from 'qs';
+// 声明
+import { AXIOS } from './';
 // 常量
 // import { LOCALSTORAGENAME } from '@/utils/consts';
 
@@ -23,7 +25,7 @@ const codeMessage = {
   555: '网络请求错误',
 };
 
-function checkStatus(response, resolve) {
+const checkStatus: AXIOS.checkStatus = (response, resolve) => {
   if (response.status >= 200 && response.status < 300) {
     return resolve(response);
   }
@@ -32,12 +34,12 @@ function checkStatus(response, resolve) {
     message: `请求错误 ${response.status}: ${response.url}`,
     description: errortext,
   });
-  const error = new Error(errortext);
+  const error: AXIOS.IError = new Error(errortext);
   error.status = response.status;
   throw error;
-}
+};
 
-function fetch(url, options) {
+const fetch: AXIOS.fetch = (url: string, options: any) => {
   let withCredentials = true;
   if (options && options.credentials) {
     withCredentials = options.credentials;
@@ -55,14 +57,14 @@ function fetch(url, options) {
       withCredentials,
       responseType: options.responseType || 'json',
     })
-      .then((response) => {
+      .then(response => {
         checkStatus(response, resolve);
       })
-      .catch((error) => {
+      .catch(error => {
         reject(error);
       });
   });
-}
+};
 
 // 添加token至请求的header的白名单
 // function noAddtoken(url) {
@@ -81,11 +83,11 @@ function fetch(url, options) {
 // request/response拦截器
 // Add a request interceptor
 axios.interceptors.request.use(
-  (config) => {
+  config => {
     // Do something before request is sent
     return config;
   },
-  (error) => {
+  error => {
     // Do something with request error
     return Promise.reject(error);
   }
@@ -93,11 +95,11 @@ axios.interceptors.request.use(
 
 // Add a response interceptor
 axios.interceptors.response.use(
-  (response) => {
+  response => {
     // Do something with response data
     return response;
   },
-  (error) => {
+  error => {
     // Do something with response error
     return Promise.reject(error);
   }
@@ -110,7 +112,7 @@ axios.interceptors.response.use(
  * @param  {object} [options] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
  */
-export default function request(url, options) {
+const request: AXIOS.request = (url, options) => {
   const newOptions = { ...options };
 
   newOptions.headers = {
@@ -134,8 +136,8 @@ export default function request(url, options) {
   }
 
   return fetch(url, newOptions)
-    .then(response => response.data)
-    .catch((error) => {
+    .then((response: any) => response.data)
+    .catch((error: AXIOS.IError) => {
       const newError = error;
       const errorMessage = newError.message;
       newError.message = codeMessage[newError.status] || codeMessage['555'];
@@ -155,4 +157,6 @@ export default function request(url, options) {
         extData: [],
       };
     });
-}
+};
+
+export default request;

@@ -2,9 +2,9 @@
  * @Author: Kevin Bolton
  * @Date: 2018-02-05 22:04:50
  * @Last Modified by: Kevin Bolton
- * @Last Modified time: 2018-04-23 15:41:19
+ * @Last Modified time: 2018-04-23 15:53:06
  */
-import { message as openMessage, Tag } from 'antd';
+import { message as openMessage } from 'antd';
 import { routerRedux } from 'dva/router';
 import md5 from 'js-md5';
 // 声明

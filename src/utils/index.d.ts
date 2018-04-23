@@ -1,10 +1,5 @@
 import { Element } from '../global';
 
-interface IFile {
-  type: string;
-  size: number;
-}
-
 type FuncStrToStr = (param: string) => string;
 type FuncTypeToNum = (sort: string, maps: string[]) => number;
 type FuncTypeToStr = (sort: string, maps: string[]) => string;
@@ -12,6 +7,27 @@ type FuncTypeToElements = (ids: any[], maps: any[]) => Element;
 type FuncTypeToArr = (ids: any[], maps: any[]) => string[];
 type BeforeUpload = (file: IFile) => boolean;
 type HandleToken = (params: { put: string; message?: string }) => void;
+type HandleFetch = (url: string, options: any) => any;
+
+interface IFile {
+  type: string;
+  size: number;
+}
+
+export interface IParse {
+  (
+    params: {
+      status: number;
+      message: string;
+      extData: { count: number; data: any[] };
+    }
+  ): {
+    status: number;
+    message: string;
+    count: number;
+    data: any[];
+  };
+}
 
 export declare namespace FNS {
   type setMd5 = FuncStrToStr;
@@ -35,4 +51,19 @@ export declare namespace FNS {
   type delToken = HandleToken;
   type noToken = HandleToken;
   type gotoPage = (params: { put: string; url: string; key?: string }) => void;
+}
+
+export declare namespace AXIOS {
+  interface IResponse {
+    status: number;
+    statusText: string;
+    url?: string;
+  }
+  interface IError {
+    [errName: string]: any;
+  }
+
+  type checkStatus = (response: IResponse, resolve: any) => any;
+  type fetch = HandleFetch;
+  type request = HandleFetch;
 }
