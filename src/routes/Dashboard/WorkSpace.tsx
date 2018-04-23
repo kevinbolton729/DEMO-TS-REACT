@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, Col, Row } from 'antd';
+import { Avatar } from 'antd';
 import { connect } from 'dva';
 import moment from 'moment';
 import * as React from 'react';
@@ -12,50 +12,30 @@ const styles = require('./WorkSpace.less');
 
 @connect(({ workspace, user }: any) => ({
   currentUser: user.currentUser,
-  loading: workspace.loading,
-  lists: workspace.lists,
 }))
 class WorkSpace extends React.PureComponent<IWorkProps, IWorkStates> implements IWorkItems {
-  componentWillMount() {
-    this.props.dispatch({
-      type: 'workspace/queryLists',
-    });
-  }
-
   getShowDate = () => {
+    enum formats {
+      Daybreak = '凌晨',
+      Morning = '早上',
+      Midday = '中午',
+      Afternoon = '下午',
+      Night = '晚上',
+    }
     const now = moment();
     const hour = now.hour();
-    const formats = ['凌晨', '早上', '中午', '下午', '晚上'];
-    let i = 0;
+    let i = 'Daybreak';
 
-    if (hour >= 7 && hour <= 11) {
-      i = 1;
-    }
-    if (hour >= 12 && hour <= 13) {
-      i = 2;
-    }
-    if (hour >= 14 && hour <= 18) {
-      i = 3;
-    }
-    if (hour >= 19 && hour <= 23) {
-      i = 4;
-    }
+    if (hour >= 7 && hour <= 11) i = 'Morning';
+    if (hour >= 12 && hour <= 13) i = 'Midday';
+    if (hour >= 14 && hour <= 18) i = 'Afternoon';
+    if (hour >= 19 && hour <= 23) i = 'Night';
 
     return `${formats[i]}好`;
   };
 
-  // 下载
-  handleDownload = () => {
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'workspace/downloadFile',
-      payload: { id: '5acc984e682e0945e8c6057a' },
-    });
-  };
-
   render() {
-    const { currentUser, lists, loading } = this.props;
-    const { siteNums, articleNums, articleTodayNums } = lists;
+    const { currentUser } = this.props;
     const pageHeaderContent = (
       <div className={styles.pageHeaderContent}>
         <div className={styles.avatar}>
@@ -69,14 +49,6 @@ class WorkSpace extends React.PureComponent<IWorkProps, IWorkStates> implements 
             {`${this.getShowDate()}！${currentUser.nickname}，祝您开心每一天！`}
           </div>
           <div>{ROLE_NAME}</div>
-          {/* <a download href={`${API_DOMAIN}/api/server/download/5acc984e682e0945e8c6057a`}>
-            <Button type="primary" icon="download">
-              点击下载
-            </Button>
-          </a> */}
-          <Button type="primary" icon="download" onClick={this.handleDownload}>
-            点击下载
-          </Button>
         </div>
       </div>
     );
@@ -84,28 +56,7 @@ class WorkSpace extends React.PureComponent<IWorkProps, IWorkStates> implements 
     return (
       <div>
         <PageHeaderLayout content={pageHeaderContent} />
-        <div style={{ marginTop: '24px' }}>
-          <Row gutter={16}>
-            <Col xs={24} sm={8} md={8} lg={8} xl={8}>
-              <Card loading={loading} className={styles.card}>
-                <p className={styles.siteTotal}>{siteNums}</p>
-                <p>全部站点数(个)</p>
-              </Card>
-            </Col>
-            <Col xs={24} sm={8} md={8} lg={8} xl={8}>
-              <Card loading={loading} className={styles.card}>
-                <p className={styles.articleTodayTotal}>{articleTodayNums}</p>
-                <p>今日发布文章数(篇)</p>
-              </Card>
-            </Col>
-            <Col xs={24} sm={8} md={8} lg={8} xl={8}>
-              <Card loading={loading} className={styles.card}>
-                <p className={styles.articleTotal}>{articleNums}</p>
-                <p>所有文章数(篇)</p>
-              </Card>
-            </Col>
-          </Row>
-        </div>
+        <div style={{ marginTop: '24px' }}>此处显示WorkSpace内容...</div>
       </div>
     );
   }

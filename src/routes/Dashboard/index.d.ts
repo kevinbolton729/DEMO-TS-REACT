@@ -17,5 +17,4 @@ export interface IWorkStates {}
 
 export interface IWorkItems {
   getShowDate: ReturnString;
-  handleDownload: ReturnVoid;
 }
