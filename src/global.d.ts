@@ -1,4 +1,5 @@
 type Dispatch = IAction['dispatch'];
+export type Element = JSX.Element[] | JSX.Element;
 
 interface IAction {
   action: { type: string; payload?: any };

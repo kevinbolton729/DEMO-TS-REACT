@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-type Element = JSX.Element[] | JSX.Element;
+import { Element } from '../global';
 
 export interface IPageHeaderLayoutProps {
   children?: Element;
