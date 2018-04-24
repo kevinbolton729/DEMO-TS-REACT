@@ -1,3 +1,5 @@
+export { Authorized } from './components/Authorized';
+
 type Dispatch = IAction['dispatch'];
 type FuncStrToStr = (param: string) => string;
 type FuncTypeToNum = (sort: string, maps: string[]) => number;
