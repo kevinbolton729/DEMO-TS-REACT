@@ -2,7 +2,7 @@ import { LocaleProvider, Spin } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import dynamic from 'dva/dynamic';
 import { routerRedux, Switch } from 'dva/router';
-import React, { ReactNode } from 'react';
+import * as React from 'react';
 import { getRouterData } from './common/router';
 import Authorized from './utils/Authorized';
 
@@ -16,7 +16,7 @@ const { AuthorizedRoute }: any = Authorized;
   return <Spin className={styles.globalSpin} />;
 });
 
-function RouterConfig({ history, app }: any): any {
+function RouterConfig({ history, app }: any): React.ReactNode {
   const routerData = getRouterData(app);
   const components = {
     UserLayout: routerData['/user'].component,
