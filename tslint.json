@@ -23,6 +23,9 @@
     "arrow-parens": [true, "ban-single-arg-parens"],
     "trailing-comma": [true],
     "no-var-requires": [false],
-    "curly": [false]
+    "curly": [false],
+    "prefer-const": [false],
+    "no-shadowed-variable": [false]
+    // "no-unused-variable": [true, { "ignore-pattern": "^_" }]
   }
 }
