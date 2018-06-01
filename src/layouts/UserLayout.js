@@ -7,11 +7,11 @@ import GlobalFooter from '@/components/GlobalFooter';
 // import logo from '@/assets/logo.svg';
 import { getRoutes } from '@/utils/utils';
 // 常量
-import { SYS_INFO, BROWSER_INFO, LOGO_USER, DOCUMENTITLE, PAGELOGIN } from '@/utils/consts';
+import { SYS_INFO, BROWSER_INFO, DOCUMENTITLE, PAGELOGIN } from '@/utils/consts';
 // 样式
 import styles from './UserLayout.less';
 
-const logo = LOGO_USER;
+// const logo = LOGO_USER;
 
 class UserLayout extends React.PureComponent {
   getPageTitle() {
@@ -31,9 +31,9 @@ class UserLayout extends React.PureComponent {
         <div className={styles.container}>
           <div className={styles.content}>
             <div className={styles.top}>
-              <div className={styles.header}>
+              {/* <div className={styles.header}>
                 <img alt="logo" className={styles.logo} src={logo} />
-              </div>
+              </div> */}
               <div className={styles.desc}>
                 <span className={styles.info_span}>{SYS_INFO}</span>
               </div>

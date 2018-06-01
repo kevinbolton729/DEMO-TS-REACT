@@ -15,13 +15,13 @@ export const SECRETKEY_USER = 'SECRETKEY-BOLTON';
 // 生产环境
 export const URL_PREFIX = 'http://39.108.178.198:7001/public';
 export const API_DOMAIN = 'http://39.108.178.198:7001';
-export const LOGO_USER = '../images/logo.png';
+export const LOGO_USER = '../images/';
 export const LOGO_PAGE = '../images/mainLogo.png';
 // Login/GlobalFooter 提示信息
 export const SYS_NAME = 'DEMO';
 export const SYS_INFO = '内容管理系统 CMS ADMIN Vol 1.0';
 export const BROWSER_INFO = '推荐使用360极速/Chrome/火狐等现代浏览器';
-export const SERVICE_INFO = '2018 QQ 7526666 / 3832565 提供技术支持';
+export const SERVICE_INFO = '2018 慧众云 提供技术支持';
 // 工作台
 export const ROLE_NAME = '产品 | 产品总监 - 设计 - UED';
 // 旗舰店channel id
