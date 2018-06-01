@@ -1,4 +1,4 @@
-import request from '@/utils/axios';
+import request from '@/utils/request';
 // 方法
 import { setMd5 } from '@/utils/fns';
 // 常量
@@ -12,26 +12,26 @@ export async function queryCurrent() {
   return request(`${API_DOMAIN}/api/server/currentUser`);
 }
 // 修改登录密码
-export async function editPassword(payload) {
-  const oldpwd = setMd5(payload.oldpwd);
-  const newpwd = setMd5(payload.newpwd);
+export async function editPassword(params) {
+  const oldpwd = setMd5(params.oldpwd);
+  const newpwd = setMd5(params.newpwd);
 
   return request(`${API_DOMAIN}/api/server/updatepwd`, {
     method: 'POST',
-    body: { oldpwd, newpwd },
+    params: { oldpwd, newpwd },
   });
 }
 // 修改用户信息
-export async function editUser(payload) {
+export async function editUser(params) {
   return request(`${API_DOMAIN}/api/server/updateuser`, {
     method: 'POST',
-    body: { ...payload },
+    params: { ...params },
   });
 }
 // 上传头像
-export async function uploadProtrait(payload) {
+export async function uploadProtrait(params) {
   return request(`${API_DOMAIN}/api/server/upload/portrait`, {
     method: 'POST',
-    body: payload,
+    params,
   });
 }

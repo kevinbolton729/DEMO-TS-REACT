@@ -59,12 +59,11 @@ export interface IParse {
     params: {
       status: number;
       message: string;
-      extData: { count: number; data: any[] };
+      extData: { data: any[] };
     }
   ): {
     status: number;
     message: string;
-    count: number;
     data: any[];
   };
 }

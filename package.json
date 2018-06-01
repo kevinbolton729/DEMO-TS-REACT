@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "precommit": "npm run lint-staged",
-    "start": "cross-env ESLINT=true TSLINT=true PORT=8001 roadhog dev",
+    "start": "cross-env ESLINT=true TSLINT=true PORT=8003 roadhog dev",
     "start:no-proxy": "cross-env NO_PROXY=true ESLINT=true TSLINT=true roadhog dev",
     "build": "cross-env ESLINT=none TSLINT=none roadhog build",
     "site": "roadhog-api-doc static && gh-pages -d dist",
@@ -29,6 +29,7 @@
     "dva": "^2.1.0",
     "dva-loading": "^1.0.4",
     "enquire-js": "^0.1.1",
+    "flyio": "^0.5.9",
     "fastclick": "^1.0.6",
     "js-md5": "^0.7.3",
     "lodash": "^4.17.4",
