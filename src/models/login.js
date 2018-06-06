@@ -6,13 +6,9 @@ import { reloadAuthorized } from '@/utils/Authorized';
 import { parseResponse } from '@/utils/parse';
 // import qs from 'qs';
 // 常量
-import {
-  MESSAGE_LOGINON_SUCCESS,
-  MESSAGE_LOGINOUT_SUCCESS,
-  // LOCALSTORAGENAME,
-} from '@/utils/consts';
+import { MESSAGE_LOGINON_SUCCESS, MESSAGE_LOGINOUT_SUCCESS, PAGELOGIN } from '@/utils/consts';
 // 方法
-import { delToken } from '@/utils/fns';
+// import {} from '@/utils/fns';
 
 export default {
   namespace: 'login',
@@ -43,7 +39,7 @@ export default {
         yield openMessage.error(message);
       }
     },
-    *logout(_, { put, call, select }) {
+    *logout(_, { put, select }) {
       try {
         // get location pathname
         const urlParams = new URL(window.location.href);
@@ -61,7 +57,7 @@ export default {
         });
         reloadAuthorized();
         yield openMessage.success(MESSAGE_LOGINOUT_SUCCESS);
-        yield call(delToken, { put }); // 删除Token
+        yield put(routerRedux.push(PAGELOGIN));
       }
     },
   },

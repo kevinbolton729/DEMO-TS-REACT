@@ -79,8 +79,6 @@ export interface IFns {
   strToUpper: FuncStrToStr;
   beforeUpload: BeforeUpload;
   beforeUploadVideo: BeforeUpload;
-  delToken: HandleToken;
-  noToken: HandleToken;
   getMenus: (firstMenus: any[], data?: any[]) => any[];
   getFirstMenu: (data?: any[]) => any[];
   getChildMenus: (sortId: string, data?: any[]) => any[];

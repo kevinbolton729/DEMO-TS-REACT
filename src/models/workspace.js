@@ -6,7 +6,7 @@
 // 常量
 // import {} from '@/utils/consts';
 // 方法
-// import { noToken } from '@/utils/fns';
+// import {} from '@/utils/fns';
 
 export default {
   namespace: 'workspace',

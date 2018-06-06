@@ -1,6 +1,6 @@
 import Fly from 'flyio/dist/npm/fly';
 // 配置
-import { API_DATA_ERROR, API_DATA_SUCCESS, API_DATA_TIMEOUT } from '@/utils/consts';
+import { API_DATA_ERROR, API_DATA_SUCCESS, API_DATA_TIMEOUT } from '@/config';
 
 // 获取 Fly实例
 const fly = new Fly();

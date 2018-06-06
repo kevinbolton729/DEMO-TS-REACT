@@ -1,3 +1,4 @@
+import { routerRedux } from 'dva/router';
 import { message as openMessage } from 'antd';
 import {
   query as queryUsers,
@@ -8,9 +9,9 @@ import {
 } from '@/services/user';
 import { parseResponse } from '@/utils/parse';
 // 常量
-// import {  } from '@/utils/consts';
+import { PAGELOGIN } from '@/utils/consts';
 // 方法
-import { delToken } from '@/utils/fns';
+// import {} from '@/utils/fns';
 
 const closeUpLoading = {
   type: 'changeUpLoading',
@@ -48,7 +49,7 @@ export default {
         });
       } else {
         yield openMessage.warn(message);
-        yield call(delToken, { put }); // 删除localStorage中的Token
+        yield put(routerRedux.push(PAGELOGIN));
       }
     },
     // 修改登录密码

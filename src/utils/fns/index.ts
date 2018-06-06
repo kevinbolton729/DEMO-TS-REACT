@@ -2,7 +2,7 @@
  * @Author: Kevin Bolton
  * @Date: 2018-02-05 22:04:50
  * @Last Modified by: Kevin Bolton
- * @Last Modified time: 2018-06-06 11:14:12
+ * @Last Modified time: 2018-06-06 11:22:29
  */
 import { message as openMessage } from 'antd';
 import { routerRedux } from 'dva/router';
@@ -191,21 +191,6 @@ export const beforeUploadVideo: IFns['beforeUploadVideo'] = file => {
 // --- END ---
 
 // [models]
-// 删除Token,并跳转至登录页 /user/login
-export const delToken: IFns['delToken'] = function*(params) {
-  const { put } = yield params;
-
-  // yield localStorage.removeItem(LOCALSTORAGENAME);
-  yield put(routerRedux.push(PAGELOGIN));
-};
-// Token失效时，提示并跳转至 /user/login
-export const noToken: IFns['noToken'] = function*(params) {
-  const { message, put } = yield params;
-
-  yield openMessage.warn(message);
-  // yield console.warn(message, 'no token message');
-  yield put(routerRedux.push(PAGELOGIN));
-};
 // 跳转页面
 export const gotoPage: IFns['gotoPage'] = function*(params) {
   const { url, key, put } = yield params;
