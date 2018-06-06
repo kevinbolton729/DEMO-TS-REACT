@@ -2,7 +2,7 @@
  * @Author: Kevin Bolton
  * @Date: 2018-02-05 22:04:50
  * @Last Modified by: Kevin Bolton
- * @Last Modified time: 2018-06-06 11:22:29
+ * @Last Modified time: 2018-06-06 11:28:21
  */
 import { message as openMessage } from 'antd';
 import { routerRedux } from 'dva/router';
@@ -12,10 +12,7 @@ import { API_DOMAIN, SECRETKEY_USER, URL_PREFIX } from '../../config';
 // 声明
 import { IFns } from '../../global';
 // 常量
-import {
-  PAGELOGIN,
-  // LOCALSTORAGENAME,
-} from '../consts';
+// import {} from '../consts';
 
 // md5处理
 export const setMd5: IFns['setMd5'] = pwd => {

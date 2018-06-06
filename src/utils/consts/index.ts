@@ -19,9 +19,6 @@ export const ROLE_NAME = '产品 | 产品总监 - 设计 - UED';
 export const MESSAGE_NOINPUT = '请输入查询关键字';
 export const MESSAGE_LOGINON_SUCCESS = '您已成功登陆本系统';
 export const MESSAGE_LOGINOUT_SUCCESS = '您已安全退出本系统';
-// export const MESSAGE_CHANGESELECTEDSITE_SUCCESS = '站点已切换';
-// export const MESSAGE_CHANGESELECTEDSITE_FAIL = '站点切换失败';
-// export const MESSAGE_CHANGESELECTEDSITE_NOSELECT = '请选择待切换的站点';
 // Data
 export const DATA_NODATA = '...';
 // Button
@@ -29,7 +26,6 @@ export const BTN_OK = '确定';
 export const BTN_CANCEL = '以后再说';
 export const BTN_SAVE = '保存';
 export const BTN_RESET = '重置';
-// export const BTN_CHANGE = '切换';
 // Model
 export const MODEL_WIDTH_EDIT = '60%';
 export const MODEL_ADDEDIT_TITLE = '添加/编辑';
@@ -43,15 +39,6 @@ export const MODEL_LOGINOUT_BTN_OK = '确认退出';
 export const MODEL_SECURIY_TITLE = '修改登录密码';
 export const MODEL_SECURIY_DESCRIPTION = '此处显示 Model 的HTML内容...';
 export const MODEL_SECURIY_BTN_OK = '确认修改';
-// export const MODEL_ARCHIVE_TITLE = '归档操作';
-// export const MODEL_ARCHIVE_DESCRIPTION =
-//   '将进行归档操作，归档后无法查询归档前的账单记录。是否继续？';
-// export const MODEL_ARCHIVE_BTN_OK = '确认归档';
-// export const MODEL_CHANGESELECTEDSITE_TITLE = '切换当前站点';
 export const MODEL_USERCENTER_TITLE = '个人中心';
 // Form
 export const FORM_EDIT_PWD_BTN = '确认修改密码';
-// Adver/Image
-// export const ADVER_NOTITLE = '[广告标题]';
-// export const IMAGE_NOTITLE = '[标题]';
-// export const IMAGE_NODESCRIPTION = '[描述或副标题]';

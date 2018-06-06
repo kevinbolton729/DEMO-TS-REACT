@@ -47,16 +47,13 @@ import {
   BTN_SAVE,
   BTN_RESET,
   BTN_CANCEL,
-  BTN_CHANGE,
   FORM_EDIT_PWD_BTN,
-  MODEL_CHANGESELECTEDSITE_TITLE,
   MODEL_USERCENTER_TITLE,
   MODEL_SECURIY_TITLE,
   MODEL_SECURIY_DESCRIPTION,
   MODEL_LOGINOUT_TITLE,
   MODEL_LOGINOUT_DESCRIPTION,
   MODEL_LOGINOUT_BTN_OK,
-  MESSAGE_CHANGESELECTEDSITE_NOSELECT,
 } from '@/utils/consts';
 // 方法
 import { beforeUpload } from '@/utils/fns';
@@ -283,28 +280,6 @@ class BasicLayout extends React.PureComponent {
       );
     }
   };
-  // submit 切换站点
-  submitChange = (e) => {
-    e.preventDefault();
-
-    const { dispatch, form } = this.props;
-    const selectedSiteid = form.getFieldValue('changesite');
-    // console.log(selectedSiteid, 'selectedSiteid');
-
-    if (selectedSiteid) {
-      dispatch({
-        type: 'global/changeSelectedSite',
-        payload: selectedSiteid,
-      });
-
-      // 关闭Modal
-      setTimeout(() => {
-        this.closeModal();
-      }, 500);
-    } else {
-      message.error(MESSAGE_CHANGESELECTEDSITE_NOSELECT);
-    }
-  };
   // submit 修改个人中心
   submitUser = (e) => {
     e.preventDefault();
@@ -435,9 +410,7 @@ class BasicLayout extends React.PureComponent {
     const {
       currentUser,
       uploading,
-      sitetypes,
       collapsed,
-      globalConfirmLoading,
       confirmLoading,
       fetchingNotices,
       notices,
@@ -446,14 +419,8 @@ class BasicLayout extends React.PureComponent {
       location,
       copyright,
       form,
-      currentSiteid,
     } = this.props;
     // 传入Modal的data
-    // site data
-    const passSites = sitetypes.map(item => ({
-      label: item.name,
-      value: item.siteid,
-    }));
     // sex data
     const passSex = [{ label: '男', value: '1' }, { label: '女', value: '0' }];
     const { getFieldDecorator } = form;
@@ -567,27 +534,6 @@ class BasicLayout extends React.PureComponent {
               <Divider type="vertical" />
               <Button loading={confirmLoading} type="primary" htmlType="submit">
                 {FORM_EDIT_PWD_BTN}
-              </Button>
-            </div>
-          </FormItem>
-        </Form>
-      </div>
-    );
-    const changeSiteChildren = (
-      <div style={{ padding: '0 16' }}>
-        <Form onSubmit={this.submitChange}>
-          <FormItem label="切换至">
-            {getFieldDecorator('changesite', {
-              initialValue: currentSiteid || '',
-            })(<RadioGroup options={passSites} />)}
-          </FormItem>
-          <FormItem>
-            <div style={{ marginTop: '-24px', textAlign: 'center' }}>
-              <Divider>
-                <span className="dividerFont">{MODEL_CHANGESELECTEDSITE_TITLE}</span>
-              </Divider>
-              <Button loading={globalConfirmLoading} type="primary" htmlType="submit">
-                {BTN_CHANGE}
               </Button>
             </div>
           </FormItem>
@@ -718,13 +664,11 @@ class BasicLayout extends React.PureComponent {
     // 打开的Modal类型
     const sortModal = {
       0: securityChildren,
-      1: changeSiteChildren,
       2: userCenterChildren,
     };
     // Modal 标题
     const titleModal = {
       0: MODEL_SECURIY_TITLE,
-      1: MODEL_CHANGESELECTEDSITE_TITLE,
       2: MODEL_USERCENTER_TITLE,
     };
     const passChildren = sortModal[modalSort];
