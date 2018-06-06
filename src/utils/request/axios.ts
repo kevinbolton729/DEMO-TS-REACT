@@ -2,7 +2,7 @@ import { notification } from 'antd';
 import axios from 'axios';
 import qs from 'qs';
 // 声明
-import { IAxios } from '../global';
+import { IAxios } from '../../global';
 // 常量
 // import { LOCALSTORAGENAME } from '@/utils/consts';
 

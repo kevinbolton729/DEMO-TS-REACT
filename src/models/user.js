@@ -12,6 +12,11 @@ import { parseResponse } from '@/utils/parse';
 // 方法
 import { delToken } from '@/utils/fns';
 
+const closeUpLoading = {
+  type: 'changeUpLoading',
+  payload: 'error',
+};
+
 export default {
   namespace: 'user',
 
@@ -99,7 +104,7 @@ export default {
         payload: 'loading',
       });
       const response = yield call(uploadProtrait, payload);
-      // console.log(response, 'response');
+      console.log(response, 'response');
       const { status, message } = yield call(parseResponse, response);
 
       if (status > 0) {
@@ -114,12 +119,10 @@ export default {
       } else if (status !== -1) {
         // 请求接口错误
         yield openMessage.error(message);
+        yield put(closeUpLoading);
       } else {
         // axios 请求错误
-        yield put({
-          type: 'changeUpLoading',
-          payload: 'error',
-        });
+        yield put(closeUpLoading);
       }
     },
   },

@@ -1,4 +1,4 @@
-import request from '@/utils/request';
+import request from '@/utils/request/axios';
 // 方法
 import { setMd5 } from '@/utils/fns';
 // 常量
