@@ -79,14 +79,16 @@ const request = (url, options) => {
     'Content-Type': 'application/x-www-form-urlencoded',
     ...newOptions.headers,
   };
-
   if (
-    !(newOptions.method === 'POST' || newOptions.method === 'PUT') &&
+    (newOptions.method === 'POST' || newOptions.method === 'PUT') &&
     url.indexOf('/upload/') !== -1
   ) {
-    newOptions.headers['X-Requested-With'] = 'XMLHttpRequest';
+    newOptions.headers['Content-Type'] = 'multipart/form-data';
   }
 
+  newOptions.headers['X-Requested-With'] = 'XMLHttpRequest';
+
+  // console.log(newOptions, 'newOptions');
   return fetch(url, newOptions)
     .then(response => response.data)
     .catch(() => {

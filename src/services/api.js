@@ -1,4 +1,4 @@
-import request from '@/utils/request/axios';
+import request from '@/utils/request';
 // 方法
 import { setMd5 } from '@/utils/fns';
 // 常量
@@ -13,14 +13,14 @@ export async function fakeAccountLogin(params) {
   // await console.log(password, 'password');
   return request(`${API_DOMAIN}/api/server/loginon`, {
     method: 'POST',
-    body: { username, password },
+    params: { username, password },
   });
 }
 // 注册
 export async function fakeRegister(params = {}) {
   return request(`${API_DOMAIN}/api/server/register`, {
     method: 'POST',
-    body: { ...params },
+    params: { ...params },
   });
 }
 // [图片]
