@@ -2,24 +2,19 @@
  * @Author: Kevin Bolton
  * @Date: 2018-02-05 22:04:50
  * @Last Modified by: Kevin Bolton
-<<<<<<< HEAD:src/utils/fns/index.ts
- * @Last Modified time: 2018-06-01 15:22:28
-=======
- * @Last Modified time: 2018-05-05 19:06:02
->>>>>>> 31422bb89a72decc70cba358ceee1ef71f5c1007:src/utils/fns.ts
+ * @Last Modified time: 2018-06-06 11:14:12
  */
 import { message as openMessage } from 'antd';
 import { routerRedux } from 'dva/router';
 import md5 from 'js-md5';
+// Config
+import { API_DOMAIN, SECRETKEY_USER, URL_PREFIX } from '../../config';
 // 声明
 import { IFns } from '../../global';
 // 常量
 import {
-  API_DOMAIN,
   PAGELOGIN,
-  SECRETKEY_USER,
   // LOCALSTORAGENAME,
-  URL_PREFIX,
 } from '../consts';
 
 // md5处理

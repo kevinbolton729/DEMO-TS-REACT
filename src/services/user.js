@@ -1,8 +1,10 @@
 import request from '@/utils/request';
+// Config
+import { API_DOMAIN } from '@/config';
 // 方法
 import { setMd5 } from '@/utils/fns';
 // 常量
-import { API_DOMAIN } from '@/utils/consts';
+// import {} from '@/utils/consts';
 
 export async function query() {
   return request('/api/users');

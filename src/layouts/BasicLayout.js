@@ -35,11 +35,11 @@ import { openModal, openConfirm } from '@/components/Modal';
 // 样式
 import styles from '@/layouts/BasicLayout.less';
 
+// Config
+import { URL_PREFIX, API_DOMAIN } from '@/config';
 // 常量
 import {
   LOGO_PAGE,
-  URL_PREFIX,
-  API_DOMAIN,
   DOCUMENTITLE,
   COLLAPSEDWIDTH,
   NOCOLLAPSEDWIDTH,
