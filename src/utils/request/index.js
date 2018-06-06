@@ -59,7 +59,7 @@ const fetch = (url, options) => {
         parseJson: true,
         // 设置responseType
         // eg.arraybuffer/blob/document/json/text/moz-chunked-arraybuffer/ms-stream
-        responseType: options.responseType || 'text',
+        responseType: options.responseType || 'json',
         timeout: options.timeout || API_DATA_TIMEOUT, // 超时时间
         withCredentials,
       })

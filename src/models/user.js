@@ -104,7 +104,7 @@ export default {
         payload: 'loading',
       });
       const response = yield call(uploadProtrait, payload);
-      console.log(response, 'response');
+      // console.log(response, 'response');
       const { status, message } = yield call(parseResponse, response);
 
       if (status > 0) {
@@ -116,12 +116,12 @@ export default {
         yield put({
           type: 'fetchCurrent',
         });
-      } else if (status !== -1) {
-        // 请求接口错误
+      } else if (status === 0) {
+        // axios请求错误
         yield openMessage.error(message);
         yield put(closeUpLoading);
       } else {
-        // axios 请求错误
+        // 接口请求返回错误
         yield put(closeUpLoading);
       }
     },

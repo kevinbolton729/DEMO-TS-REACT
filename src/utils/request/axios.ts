@@ -4,7 +4,14 @@ import qs from 'qs';
 // 声明
 import { IAxios } from '../../global';
 // 常量
-// import { LOCALSTORAGENAME } from '@/utils/consts';
+import { API_DATA_ERROR } from '../consts';
+
+// 响应错误处理函数
+const errorHandler = {
+  status: 0,
+  message: API_DATA_ERROR,
+  data: [],
+};
 
 const codeMessage = {
   200: '服务器成功返回请求的数据',
@@ -151,11 +158,7 @@ const request: IAxios['request'] = (url, options) => {
       });
 
       // console.log(`请求URL: ${url}`);
-      return {
-        status: -1,
-        message: newError.message,
-        extData: [],
-      };
+      return errorHandler;
     });
 };
 

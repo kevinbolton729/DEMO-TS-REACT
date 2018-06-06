@@ -13,14 +13,14 @@ export async function fakeAccountLogin(params) {
   // await console.log(password, 'password');
   return request(`${API_DOMAIN}/api/server/loginon`, {
     method: 'POST',
-    params: { username, password },
+    body: { username, password },
   });
 }
 // 注册
 export async function fakeRegister(params = {}) {
   return request(`${API_DOMAIN}/api/server/register`, {
     method: 'POST',
-    params,
+    body: { ...params },
   });
 }
 // [图片]

@@ -1,4 +1,4 @@
-import request from '@/utils/request';
+import request from '@/utils/request/axios';
 // 方法
 import { setMd5 } from '@/utils/fns';
 // 常量
@@ -18,20 +18,22 @@ export async function editPassword(params) {
 
   return request(`${API_DOMAIN}/api/server/updatepwd`, {
     method: 'POST',
-    params: { oldpwd, newpwd },
+    body: { oldpwd, newpwd },
   });
 }
 // 修改用户信息
 export async function editUser(params) {
   return request(`${API_DOMAIN}/api/server/updateuser`, {
     method: 'POST',
-    params: { ...params },
+    body: { ...params },
   });
 }
 // 上传头像
 export async function uploadProtrait(params) {
+  console.log(params, 'params');
   return request(`${API_DOMAIN}/api/server/upload/portrait`, {
     method: 'POST',
-    params,
+    responseType: 'text',
+    body: params,
   });
 }
