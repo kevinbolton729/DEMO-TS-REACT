@@ -59,12 +59,13 @@ export interface IParse {
     params: {
       status: number;
       message: string;
-      extData: { data: any[] };
+      extData: { data: any[]; count?: number };
     }
   ): {
     status: number;
     message: string;
     data: any[];
+    count?: number;
   };
 }
 export interface IFns {

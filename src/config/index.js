@@ -10,7 +10,7 @@ export const API_DOMAIN = 'http://127.0.0.1:7002';
 // API
 export const API_DATA_NOGET = '什么也没有';
 export const API_DATA_LOADING = '努力加载中...';
-export const API_DATA_SUCCESS = '获取成功';
+export const API_DATA_SUCCESS = '数据获取成功';
 export const API_DATA_INFO = '获取数据普通提示';
 export const API_DATA_WARNING = '获取数据警告提示';
 export const API_DATA_ERROR = '数据获取失败';
