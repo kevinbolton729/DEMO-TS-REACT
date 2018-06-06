@@ -15,13 +15,8 @@ export const SECRETKEY_USER = 'SECRETKEY-BOLTON';
 // 生产环境
 export const URL_PREFIX = 'http://39.108.178.198:7001/public';
 export const API_DOMAIN = 'http://39.108.178.198:7001';
-<<<<<<< HEAD:src/utils/consts/index.ts
-export const LOGO_USER = '../images/';
-export const LOGO_PAGE = '../images/mainLogo.png';
-=======
 export const LOGO_USER = '/images/logo.png';
 export const LOGO_PAGE = '/images/mainLogo.png';
->>>>>>> 31422bb89a72decc70cba358ceee1ef71f5c1007:src/utils/consts.ts
 // Login/GlobalFooter 提示信息
 export const SYS_NAME = 'DEMO';
 export const SYS_INFO = '内容管理系统 CMS ADMIN Vol 1.0';
