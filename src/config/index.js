@@ -2,11 +2,11 @@
 export const SECRETKEY_USER = 'SECRETKEY-BOLTON';
 // 接口
 // 开发环境
-export const URL_PREFIX = 'http://127.0.0.1:7002/public';
-export const API_DOMAIN = 'http://127.0.0.1:7002';
+// export const URL_PREFIX = 'http://127.0.0.1:7002/public';
+// export const API_DOMAIN = 'http://127.0.0.1:7002';
 // 生产环境
-// export const URL_PREFIX = 'http://39.108.178.198:7001/public';
-// export const API_DOMAIN = 'http://39.108.178.198:7001';
+export const URL_PREFIX = 'http://39.108.178.198:7001/public';
+export const API_DOMAIN = 'http://39.108.178.198:7001';
 // API
 export const API_DATA_NOGET = '什么也没有';
 export const API_DATA_LOADING = '努力加载中...';
